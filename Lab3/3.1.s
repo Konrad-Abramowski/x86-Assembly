@@ -4,7 +4,6 @@ PRINTF_STRING:  .string "Char: %s ,Char*: %s"
 
 .text
     .globl main
-    .type main, @function
 main:
     pushl %ebp
     movl %esp, %ebp
@@ -24,7 +23,6 @@ main:
     pushl $PRINTF_STRING
     call printf
     addl $8, %esp
-
 
     leave
     ret
