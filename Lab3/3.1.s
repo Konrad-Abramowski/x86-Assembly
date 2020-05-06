@@ -1,6 +1,6 @@
 .data
-SCANF_STRING:   .ascii "%1s %4s"
-PRINTF_STRING:  .string "Char: %s ,Char*: %s"
+SCANF_STRING:   .ascii "%c %4s"
+PRINTF_STRING:  .string "Char: %c ,Char*: %4s"
 
 .text
     .globl main
@@ -18,7 +18,7 @@ main:
 
     leal 12(%ebp), %eax
     pushl %eax
-    leal 8(%ebp), %eax
+    movl 8(%ebp), %eax
     pushl %eax
     pushl $PRINTF_STRING
     call printf

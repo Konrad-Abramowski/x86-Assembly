@@ -1,6 +1,3 @@
-.data
-
-
 .text
   .globl functionChar
   .type functionChar, @function
@@ -11,9 +8,8 @@ movl %esp, %ebp
 
 movl 8(%ebp), %ecx
 movb (%ecx), %al
-addb $1, %al
+incb %al
 movb %al, (%ecx)
-
 
 movl %ebp, %esp
 popl %ebp
