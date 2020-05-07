@@ -1,0 +1,10 @@
+CPU cycles for saving into register: 318
+CPU cycles for saving into memory: 447
+CPU cycles for SYS_CALL READ: 6364
+CPU cycles for SYS_CALL WRITE: 5534
+CPU cycles for scanf: 110333
+CPU cycles for empty printf: 300
+Assembler
+CPU cycles for short printf: 1018
+Assembler
+CPU cycles for short printf with \n: 2035
