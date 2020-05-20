@@ -1,15 +1,16 @@
 .data
 FPUControlRegister: .space 4
 FPUStatusRegister: .space 4
-
 .text
-    .globl readFPUControl, readFPUStatus
+    .globl readFPUControl, readFPUStatus, writeFPUControl
 
 readFPUControl:
     push %ebp
     movl %esp, %ebp
     fstcw FPUControlRegister
-    movw $FPUControlRegister, %ax
+    fwait
+    movw FPUControlRegister, %ax
+    movl %ebp, %esp
     pop %ebp
 ret
 
@@ -17,6 +18,17 @@ readFPUStatus:
     push %ebp
     movl %esp, %ebp
     fstsw FPUStatusRegister
-    movw $FPUStatusRegister, %ax
+    fwait
+    movw FPUStatusRegister, %ax
+    movl %ebp, %esp
+    pop %ebp
+ret
+
+writeFPUControl:
+    push %ebp
+    movl %esp, %ebp
+    fldcw 8(%ebp)
+    fwait
+    movl %ebp, %esp
     pop %ebp
 ret

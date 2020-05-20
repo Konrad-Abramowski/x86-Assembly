@@ -2,13 +2,18 @@
 
 short readFPUControl();
 short readFPUStatus();
+void writeFPUControl(short controlRegister);
 
 int main(){
 
-    short x;
-    x = readFPUControl();
-    printf("FPU control word value: %hi\n", x);
-    x = readFPUStatus();
-    printf("FPU status register value: %hi\n", x);
+    printf("FPU status register value: %hi\n", readFPUStatus());
+
+    printf("FPU control word value: %hi\n", readFPUControl());
+
+    printf("writeFPUControl function\n");
+    writeFPUControl(8000);
+   
+    printf("FPU control word value: %hi\n", readFPUControl());
+
     return 0;
 }
