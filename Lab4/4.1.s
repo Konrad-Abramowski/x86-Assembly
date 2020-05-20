@@ -1,6 +1,6 @@
 .data
-FPUControlRegister: .space 4
-FPUStatusRegister: .space 4
+FPUControlRegister: .space 2
+FPUStatusRegister: .space 2
 .text
     .globl readFPUControl, readFPUStatus, writeFPUControl
 
