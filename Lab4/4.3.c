@@ -12,9 +12,10 @@ int bitReturn(int pointer, int index){
     else return 1; 
 }
 int main(){
+    writeFPUControl(127); 
 
     printf("FPU control word value: %hi\n", readFPUControl());
-    printf(" 0000 0011 0111 1111  (895)                    \n"); 
+    printf(" 0000 0000 0111 1111  (127)                    \n"); 
     printf("      ^^                                       \n");
     printf("      ||                                       \n");
     printf(" [Rounding Control] (Round to nearest (even))  \n");
@@ -26,30 +27,30 @@ int main(){
     int *pointer;
     pointer = &result;
     printf("%.12f\n", result);
-    for (int i = 63; i >= 0; i--)
+    for (int i = 31; i >= 0; i--)
     {
         
-        if(i == 62){
+        if(i == 30){
             printf(" ");
         }
-        if(i == 51){
+        if(i == 22){
             printf(" ");
         }
         printf("%d",bitReturn(*pointer,i));
     }
     printf("\n");
-    printf("                                                                ^^\n");
-    printf("                                                                ||\n");
-    printf("                                                        [Round to nearest]\n");
+    printf("                                ^^\n");
+    printf("                                ||\n");
+    printf("                         [Round to nearest]\n");
 
 
     printf("writeFPUControl function\n");
-    writeFPUControl(3967); 
+    writeFPUControl(3199); 
     
 
 
     printf("FPU control word value: %hi\n", readFPUControl());
-    printf(" 0000 1111 0111 1111 (3967)                    \n"); 
+    printf(" 0000 1100 0111 1111 (3199)                    \n"); 
     printf("      ^^                                       \n");
     printf("      ||                                       \n");
     printf(" [Rounding Control] (Round toward zero)         \n");
@@ -58,23 +59,22 @@ int main(){
     result = divide(x,y);
     printf("%.12f\n", result);
     pointer = &result;
-    for (int i = 63; i >= 0; i--)
+    for (int i = 31; i >= 0; i--)
     {
         
-        if(i == 62){
+        if(i == 30){
             printf(" ");
         }
-        if(i == 51){
+        if(i == 22){
             printf(" ");
         }
         printf("%d",bitReturn(*pointer,i));
     }
     printf("\n");
-    printf("                                                                ^^\n");
-    printf("                                                                ||\n");
-    printf("                                                       [Round toward zero]\n");
+    printf("                                ^^\n");
+    printf("                                ||\n");
+    printf("                        [Round toward zero]\n");
     
 
     return 0;
 }
-
